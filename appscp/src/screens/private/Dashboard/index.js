@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, Alert } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Background from '~/components/Background';
 import Header from '~/components/Header';
@@ -9,7 +10,33 @@ import { Container, Title, RowClosure, InfoClosure, TitleClosure, ValueClosure,
   DetailingCurrentCapital, DetailingCurrentCapitalRight, DetailingCurrentCapitalLeft,
   DetailingRowCurrentCapital, TitleDetailing, SubTitleDetailing, ResultSubTitleDetailing } from './styles';
 
-export default function Dashboard() {
+
+import Extrato from '../private/Extrato';
+import Aporte from '../private/Aporte';
+import Resgate from '../private/Resgate';
+import Servicos from '../private/Servicos';
+import ServicosItens from '../private/ServicosItens';
+import Notificacao from '../private/Notificacao';
+
+const MainStackNavigator = createStackNavigator();
+
+function MainStack() {
+  return (
+    
+    <MainStack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+     initialRouteName="Home"
+    > 
+      <Stack.Screen name="Home" component={Dashboard} />
+      <Stack.Screen name="Servicos" component={Servicos} />
+      <Stack.Screen name="ServicosItens" component={ServicosItens} />
+      <Stack.Screen name="Notificacao" component={Notificacao} />
+   </MainStack.Navigator>
+  );
+}
+function Dashboard() {
   
   return (
   
@@ -63,3 +90,4 @@ export default function Dashboard() {
   );
 }
 
+export Default MainStack;
